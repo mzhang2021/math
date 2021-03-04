@@ -49,7 +49,36 @@ And just because I can, I decided to write my own code in C++ to verify this:
 
 ![pic2](pic2.png)
 
+## Generalizations
 
+From Wikipedia:
+$$
+f^{(n)}(x) \approx \frac{\mathcal C^{(n)}_{n^2 - 1}(f(x + i^{(1)}h + \dots + i^{(n)} h))}{h^n}
+$$
+where $\mathcal C_k^{(n)}$ and $i^{(k)}$ are stuff dealing with multicomplex numbers. It's a whole other rabbit hole that seems intriguing and mostly went over my head. The fact that the Wikipedia article for [multicomplex numbers](https://en.wikipedia.org/wiki/Multicomplex_number) is just 5 paragraphs long doesn't help.
+
+## So what is the best method/what are other options?
+
+In terms of numerical differentiation methods:
+
+- Taking multiple steps
+- Differentiation by interpolation
+- Something about Laplace transform
+
+There are also other classes of differentiation methods altogether:
+
+- Numerical Differentiation: use small $h$ to approximate
+- Symbolic Differentiation: computer actually attempts to do stuff with variables and manipulate equations
+  - WolframAlpha/Mathematica
+- Automatic Differentiation
+  - Wikipedia: "AD exploits the fact that every computer program, no matter how complicated, executes a sequence of elementary arithmetic operations (addition, subtraction, multiplication, division, etc.) and elementary functions (exp, log, sin, cos, etc.). By applying the chain rule repeatedly to these operations, derivatives of arbitrary order can be computed automatically, accurately to working precision, and using at most a small constant factor more arithmetic operations than the original program."
+  - TLDR: breaks down into elementary operations, spams chain rule
+  - According to some comment I read, the complex-step differentiation method is simply using the complex numbers as "approximate dual numbers" in automatic differentiation
+  - Dual numbers: $a + b \epsilon$, where $\epsilon^2 = 0$, but they're hypercomplex numbers so $\epsilon \neq 0$
+
+Explanation of different methods: https://stackoverflow.com/questions/43455320/difference-between-symbolic-differentiation-and-automatic-differentiation
+
+- Second answer claims symbolic and automatic differentiation are equivalent, the two seem to do the same thing just with different representations of what they're operating on
 
 ## Sources
 
@@ -64,3 +93,7 @@ http://www.johnlapeyre.com/posts/complex-step-differentiation/
 https://en.wikipedia.org/wiki/Numerical_differentiation#Complex-variable_methods
 
 https://en.wikipedia.org/wiki/Automatic_differentiation#Automatic_differentiation_using_dual_numbers
+
+http://www2.math.umd.edu/~dlevy/classes/amsc466/lecture-notes/differentiation-chap.pdf
+
+https://stackoverflow.com/questions/43455320/difference-between-symbolic-differentiation-and-automatic-differentiation
